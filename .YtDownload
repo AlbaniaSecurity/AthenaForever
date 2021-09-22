@@ -1,0 +1,107 @@
+#!/bin/env bash
+
+media="/sdcard/YtDownload/"
+
+# TPUT CONFIG :)
+BLACK=$(tput setaf 0)
+RED=$(tput setaf 1)
+GREEN=$(tput setaf 2)
+YELLOW=$(tput setaf 3)
+BLUE=$(tput setaf 4)
+MAGENTA=$(tput setaf 5)
+CYAN=$(tput setaf 6)
+WHITE=$(tput setaf 7)
+BOLD=$(tput bold)
+REDBG=$(tput setab 1)
+RESET=$(tput sgr0)
+############################
+echo
+echo -e ${GREEN}"INSTALANDO PACOTES NECESSÁRIOS..."${RESET}
+############################
+pkg install youtube-dl -y &> /dev/null
+pkg install atomicparsley -y &> /dev/null
+pkg install ffmpeg -y &> /dev/null
+############################
+
+menu()
+{
+clear
+figlet -f slant Yt-Download|lolcat
+echo "                                                    @AthenaD3V"|lolcat
+echo "=============================================================="|lolcat
+echo -e ${WHITE}"[*]MENU:"
+echo
+echo -e ${WHITE}"[1] >> Baixar Video do Youtube."
+echo
+echo -e ${WHITE}"[2] >> Baixar Musica"
+echo
+echo "==============================================================="|lolcat
+echo
+printf "${WHITE}Escolha Uma Opção —> "; read op
+echo
+
+case $op in
+      1) video
+            ;;
+      2) audio
+            ;;
+esac
+}
+
+check ()
+{
+      if [ ! -d "$media" ]; then
+            echo -e "${BOLD}Criando diretorio: ${RED}$media"${RESET}
+            mkdir -p -- "$media"
+            sleep 1
+      fi
+}
+
+video ()
+{
+      echo
+      printf "${BOLD}Digite o Link do Youtube —› ${RESET}"; read link
+      echo
+      echo -e "${BOLD}${REDBG}O Video Será baixado na melhor Qualidade Possivel.${RESET}"
+      echo
+      echo -e "${BOLD}${REDBG}Isso pode demorar...${RESET}"
+      echo 
+      echo -e "${BOLD}O Video está sendo baixado...Aguarde"
+      echo
+      youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' --merge-output-format mp4 --restrict-filenames -i -o "$media%(title)s.%(ext)s" $link &> /dev/null
+      clear
+      echo
+      echo
+      echo -e "${BOLD}${WHITE}DOWNLOAD CONCLUIDO..."
+}
+
+audio ()
+{
+      echo
+      printf "${BOLD}Digite o Link da Musica —› ${RESET}"; read link
+      echo
+      echo "${REDBG}${BOLD}Esses são os formatos disponiveis (best,aac,flac,mp3,m4a,opus,vorbis ou wav)${RESET}"
+      echo
+      printf "${BOLD}Digite o formato que você deseja (${MAGENTA}recomendo m4a${RESET}) —> "; read fm
+      echo
+      echo "${WHITE}${BOLD}Download iniciado...Aguarde"
+      youtube-dl -i --extract-audio --audio-format $fm --audio-quality 0 --embed-thumbnail --add-metadata --restrict-filenames -i -o "$media%(title)s.%(ext)s" $link &> /dev/null
+      clear
+      echo "${BOLD}DOWNLOAD CONCLUIDO."
+      echo
+      echo "${BOLD}BYE..."
+}
+
+
+
+# Checking if /sdcard/YtDownload exists.
+
+check
+
+######################################
+
+# Calling Menu #
+
+menu
+
+################

@@ -1,0 +1,57 @@
+#!/bin/env bash
+
+pkg install ncurses-utils -y
+
+BLACK=$(tput setaf 0)
+RED=$(tput setaf 1)
+GREEN=$(tput setaf 2)
+YELLOW=$(tput setaf 3)
+BLUE=$(tput setaf 4)
+MAGENTA=$(tput setaf 5)
+CYAN=$(tput setaf 6)
+WHITE=$(tput setaf 7)
+BOLD=$(tput bold)
+REDBG=$(tput setab 1)
+RESET=$(tput sgr0)
+
+npm -v bash-obfuscate || npm install -g bash-obfuscate
+
+Obfuscate ()
+{
+        clear
+        figlet -f slant Obfuscate|lolcat
+        echo "                                      @AthenaD3V"|lolcat
+        echo "================================================="|lolcat
+        echo
+        echo -n "${WHITE}${BOLD}Nome do arquivo: ${RESET}"; read nm
+        echo
+        echo -n "${WHITE}${BOLD}Digite o nome do arquivo De saída: ${RESET}"; read newnm
+        echo
+        echo "#!/bin/env bash" >> $newnm
+        echo "#" >> $newnm
+        echo "# Codigo ofuscado by @AthenaD3V" >> $newnm
+        echo "#" >> $newnm
+        echo "# Contact: https://wa.me/556299885573" >> $newnm
+        echo "#" >> $newnm
+        echo "# Github: https://github.com/AthenaD3V" >> $newnm
+        echo "#" >> $newnm
+
+        if [ -e athena.sh ]; then
+                rm athena.sh
+        fi
+
+        bash-obfuscate -r $nm -o athena.sh
+        batata=$(cat athena.sh)
+        echo "$batata" >> $newnm
+
+        if [ -e athena.sh ]; then
+                rm athena.sh
+        fi
+
+        clear
+        echo
+        echo "${REDBG}${BOLD} O Codigo Foi Ofuscado ${RESET}"
+        echo
+        echo -e "${WHITE}${BOLD}Bye...\t"
+}
+Obfuscate

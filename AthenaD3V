@@ -1,0 +1,92 @@
+#!/usr/bin/python
+
+import os, sys, time
+
+
+P = "\033[m" + "\033[1;30m"
+V = "\033[m" + "\033[1;31m"
+B = "\033[m" + "\033[1;37m"
+C = "\033[m" + "\033[1;36m"
+A = "\033[m" + "\033[1;33m"
+
+
+def Warning( warning ):
+	info = ( B ) + "\n\n[" + ( V ) + f"{warning}" + ( B ) + "] " + ( C )
+	return ( info )
+
+
+def clear():
+	os.system("cls" if (os.name == "nt") else "clear");
+
+
+def script( program ):
+	os.system(f"bash {program}");
+
+
+def banner():
+	banner = f"""{V}
+	 ┏━┓╺┳╸╻ ╻┏━╸┏┓╻┏━┓   ╺┳┓┏━┓╻ ╻
+	 ┣━┫ ┃ ┣━┫┣╸ ┃┗┫┣━┫    ┃┃╺━┫┃┏┛
+	 ╹ ╹ ╹ ╹ ╹┗━╸╹ ╹╹ ╹   ╺┻┛┗━┛┗┛
+
+    {B}Script Coded By: {P}@AthenaD3V {B}// {P}GITHUB
+"""
+
+	return ( banner );
+
+
+exit = 0
+while ( exit < 1 ):
+	clear();print( "\033[m",
+			banner(),
+			f"""
+        {A}1 {B}>> ADMIN FINDER
+        {A}2 {B}>> CONSULT DATA
+        {A}3 {B}>> ENCRYPT FILE
+        {A}4 {B}>> STALKING GITHUB
+        {A}5 {B}>> GENERATE REVERSE SHELL
+        {A}6 {B}>> DOWNLOAD YOUTUBE VIDEOS
+        {A}7 {B}>> MORE...
+
+        {A}E {B}>> EXIT...
+""");
+
+	try:
+		option = input( Warning( "+" ) + f"{B}Choose an option:{P} ").lower();
+
+
+		if ( option == "1" or option == "01" ):
+			script( ".CmFinder" );
+
+		elif ( option == "2" or option == "02" ):
+			script( ".painel.sh" );
+
+		elif ( option == "3" or option == "03" ):
+			script( ".obfuscate" );
+
+		elif ( option == "4" or option == "04" ):
+			script( ".InfoGit" );
+
+		elif ( option == "5" or option == "05" ):
+			script( ".ShellR");
+
+		elif ( option == "6" or option == "06" ):
+			script( ".YtDownload" );
+
+		elif ( option == "7" or option == "07" ):
+			script( ".ShellPlague" );
+
+		elif ( option == "e" or option == "exit" ):
+			exit += 1
+
+		else:
+			pass
+
+
+	except KeyboardInterrupt:
+		print( Warning( "!" ) + "Closing session...\033[m");
+		sys.exit()
+
+	except Exception as error:
+		print( Warning( "ERROR:" ) + str( error ));
+		sys.exit()

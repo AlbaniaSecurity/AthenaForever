@@ -1,0 +1,49 @@
+#!/bin/env bash
+
+# authoress: AthenaD3
+
+# Script Made to get information from a github profile.
+
+pkg install curl jq figlet -y
+
+clear
+figlet -f slant InfoGit|lolcat
+echo "                          @AthenaD3V "|lolcat
+echo "========================================"|lolcat
+echo -n "Digite o Nome do Perfil: "; read P
+echo "========================================"|lolcat
+
+if [ $P ]; then
+       printf 'NICK: '; curl -s https://api.github.com/users/$P | jq -r '.login'
+       echo
+       printf 'ID: '; curl -s https://api.github.com/users/$P | jq -r '.id'
+       echo
+       printf 'LINK DO PERFIL: '; curl -s https://api.github.com/users/$P | jq -r '.html_url'
+       echo
+       printf 'LINK DA FOTO DE PERFIL: '; curl -s https://api.github.com/users/$P | jq -r '.avatar_url'
+       echo
+       printf 'TIPO: '; curl -s https://api.github.com/users/$P | jq -r '.type'
+       echo
+       printf 'BLOG: '; curl -s https://api.github.com/users/$P | jq -r '.blog'
+       echo
+       printf 'LOC: '; curl -s https://api.github.com/users/$P | jq -r '.location'
+       echo
+       printf 'COMPANY: '; curl -s https://api.github.com/users/$P | jq -r '.company'
+       echo
+       printf 'EMAIL: '; curl -s https://api.github.com/users/$P | jq -r '.email'
+       echo
+       printf 'BIO: '; curl -s https://api.github.com/users/$P | jq -r '.bio'
+       echo
+       printf 'TWITTER: '; curl -s https://api.github.com/users/$P | jq -r '.twitter_username'
+       echo
+       printf 'REPOSITORIOS: '; curl -s https://api.github.com/users/$P | jq -r '.public_repos'
+       echo
+       printf 'SEGUIDORES: '; curl -s https://api.github.com/users/$P | jq -r '.followers'
+       echo
+       printf 'SEGUINDO: '; curl -s https://api.github.com/users/$P | jq -r '.following'
+       echo
+       printf 'DATA DE CRIACAO: '; curl -s https://api.github.com/users/$P | jq -r '.created_at'
+
+       else
+              printf "Opção Invalida\n"
+fi

@@ -1,0 +1,283 @@
+#!/bin/env bash
+
+########################
+# NAME: ShellPlague    #
+########################
+# AUTHORESS: AthenaD3V #
+########################
+###########################################
+# Obs: I do not allow plagiarism(the      #
+# act of impersonating the creator of it) #
+###########################################
+
+# TPUT CONFIG :);
+
+BLACK=$(tput setaf 0)
+RED=$(tput setaf 1)
+GREEN=$(tput setaf 2)
+YELLOW=$(tput setaf 3)
+BLUE=$(tput setaf 4)
+MAGENTA=$(tput setaf 5)
+CYAN=$(tput setaf 6)
+WHITE=$(tput setaf 7)
+BOLD=$(tput bold)
+REDBG=$(tput setab 1)
+RESET=$(tput sgr0)
+
+#############################
+echo
+echo
+echo -n "${WHITE}${BOLD}Instalando pacotes necessarios aguarde...${RESET}"
+pip install lolcat &> /dev/null
+pkg install figlet -y &> /dev/null
+##############################
+
+menu (){
+      clear
+      figlet -f smmono12 ShellPlague|lolcat
+      echo ">>>>>>>>>>>>>>>>>>>>>> By:AthenaD3V <<<<<<<<<<<<<<<<<<<<"|lolcat
+      echo
+      echo "${BOLD}${WHITE}[1] —> Nmap"
+      echo
+      echo "[2] —> Ncat"
+      echo
+      echo "[3] —> Painel - Sawt ${REDBG}${BOLD}[EM DESENVOLVIMENTO]${RESET}"
+      echo
+      echo "${BOLD}${WHITE}[4] —> PhoneInfoga"
+      echo
+      echo "[5] —> Persux"
+      echo
+      echo "[6] —> SiteBroker"
+      echo
+      echo "[7] —> Xerxes"
+      echo
+      echo "[8] —> Cyber_Sec"
+      echo
+      echo "[9] —> NexPhisher"
+      echo
+      echo "[10] —> RouterSploit"
+      echo
+      echo "[11] —> Sqlmap"
+      echo
+      echo "[12] —> Nikto"
+      echo
+      echo "[13] —> Vim - Editor De Texto"
+      echo
+      echo "[14] —> Osi.Ig"
+      echo
+      echo "[15] —> HackLock"
+      echo ${RESET}
+      echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<"|lolcat
+      echo -n "${BOLD}${WHITE}[$OSTYPE] —> "; read opcao
+      echo
+
+      case $opcao in
+            1) nmap
+                ;;
+            2) ncat
+                ;;
+            3) sawt
+                ;;
+            4) phone
+                ;;
+            5) persux
+                ;;
+            6) sitebroker
+                  ;;
+            7) xerxes
+                  ;;
+            8) cyber_sec
+                  ;;
+            9) nexphisher
+                  ;;
+            10) routersploit
+                  ;;
+            11) sqlmap
+                  ;;
+            12) nikto
+                  ;;
+            13) vim
+                  ;;
+            14) osiig
+                  ;;
+            15) hacklock
+                  ;;
+            *)
+                  echo -e "${REDBG}${BOLD}Opcão Invalida Moço \t"
+                  echo
+                  echo
+      esac
+}
+
+nmap ()
+{
+      echo
+      echo -n "${REDBG}${BOLD}Instalando Nmap...${RESET}"
+      pkg install nmap -y &> /dev/null
+}
+
+ncat ()
+{
+      echo
+      echo -n "${REDBG}${BOLD}Instalando ncat...${RESET}"
+      pkg install nmap-ncat -y &> /dev/null
+}
+
+sawt ()
+{
+      echo
+      echo
+      echo -n "${WHITE}${BOLD}Ei Sweet ta fazendo ainda...${RESET}"
+      echo
+}
+
+phone ()
+{
+      echo
+      echo
+      echo -n "${REDBG}${BOLD}Instalando PhoneInfoga...${RESET}\t"
+      pkg install python2 -y &> /dev/null
+      cd $HOME
+      git clone https://github.com/abhinavkavuri/PhoneInfoga &> /dev/null
+      cd PhoneInfoga
+      mv config.example.py config.py
+      python3 -m pip install -r requirements.txt &> /dev/null
+      clear
+      python3 phoneinfoga.py -v
+}
+
+persux ()
+{
+      echo
+      echo -n "${REDBG}${BOLD}Instalando Persux...${RESET}\t"
+      cd $HOME
+      git clone https://github.com/mf256010/Persux &> /dev/null
+      cd Persux
+      chmod +x *
+      python Persux.py
+}
+
+sitebroker ()
+{
+      echo
+      echo -n "${REDBG}${BOLD}Instalando SiteBroker...${RESET}"
+      cd $HOME
+      git clone https://github.com/Anon-Exploiter/SiteBroker
+      cd SiteBroker
+      chmod +x * ; python3 -m pip install -r requirements.txt &> /dev/null
+      python SiteBroker.py
+}
+
+xerxes ()
+{
+      echo
+      echo -n "${REDBG}${BOLD}Instalando Xerxes...${RESET}"
+      pkg install clang -y &> /dev/null
+      cd $HOME
+      git clone https://github.com/PSecurity/ps.xerxes.git &> /dev/null
+      cd ps.xerxes
+      clang xerxes.c -o xerxes &> /dev/null
+      clear
+      echo
+      echo "${WHITE}${BOLD}Como Usar: ./xerxes (o link do site que deseja atacar) 80"
+}
+
+cyber_sec ()
+{
+      echo
+      echo -n "${REDBG}${BOLD}Instalando CyberSec...${RESET}"
+      pkg install curl -y &> /dev/null
+      cd $HOME
+      git clone https://github.com/AsmInstrutor/cyber_sec.git &> /dev/null
+      cd cyber_sec
+      chmod +x cybersecurity.sh
+      clear
+      ./cybersecurity.sh
+}
+
+nexphisher ()
+{
+      echo
+      echo -n "${REDBG}${BOLD}Instalando NexPhisher...${RESET}"
+      cd $HOME
+      git clone git://github.com/htr-tech/nexphisher.git &> /dev/null 
+      cd nexphisher
+      bash tmux_setup &> /dev/null
+      bash nexphisher
+}
+
+routersploit ()
+{
+      echo
+      echo -n "${REDBG}${BOLD}Instalando RouterSploit...${RESET}"
+      pkg install python2 -y &> /dev/null
+      cd $HOME
+      git clone https://github.com/threat9/routersploit.git &> /dev/null
+      cd routersploit
+      pip3 install -r requirements.txt &> /dev/null ; pip3 install -r requirements-dev.txt &> /dev/null
+      pip3 install requests &> /dev/null ; pip3 install future &> /dev/null
+      python3 rsf.py
+}
+
+sqlmap ()
+{
+      echo
+      echo -n "${REDBG}${BOLD}Instalando Sqlmap...${RESET}"
+      pip install sqlmap &> /dev/null
+      sqlmap -hh
+}
+
+nikto ()
+{
+      echo
+      echo -n "${REDBG}${BOLD}Instalando Nikto...${RESET}"
+      pkg install perl -y &> /dev/null
+      cd $HOME
+      git clone https://github.com/sullo/nikto &> /dev/null
+      cd nikto/program
+      chmod +x *
+      ./nikto.pl
+}
+
+vim ()
+{
+      echo
+      echo -n "${REDBG}${BOLD}Instalando Vim...${RESET}"
+      pkg install vim -y &> /dev/null
+      mv .vimrc $HOME
+      cd $HOME
+      curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim &> /dev/null
+      echo
+      clear
+      echo "${WHITE}${BOLD}Acesse o vimrc que esta localizado na Home usando o Vim(Ex: vim .vimrc) e Digite: PlugInstall"
+}
+
+osiig ()
+{
+      echo
+      echo -n "${REDBG}${BOLD}Instalando OsiIg...${RESET}"
+      cd $HOME
+      git clone https://github.com/th3unkn0n/osi.ig.git &> /dev/null
+      cd osi.ig
+      chmod +x *
+      python3 -m pip install -r requirements.txt &> /dev/null
+      python3 main.py -h
+}
+
+hacklock ()
+{
+      echo
+      echo "${REDBG}${BOLD}Instalando Hacklock...${RESET}"
+      pkg install python2 -y &> /dev/null
+      cd $HOME
+      git clone https://github.com/noob-hackers/hacklock &> /dev/null
+      cd hacklock
+      chmod +x *
+      bash setup
+      bash hacklock.sh
+}
+
+########## Chamando o Menu #######
+menu                             #
+##################################
