@@ -19,8 +19,8 @@ def clear():
 	os.system("cls" if (os.name == "nt") else "clear");
 
 
-def restart():
-	os.execl(executable, executable, *argv);
+#def restart():
+#	os.execl(executable, executable, *argv);
 
 
 def script( program ):
@@ -93,7 +93,7 @@ while ( exit < 1 ):
 			exit += 1
 
 		elif ( option == "u" or option == "update" ):
-			update();restart();
+			update(); #restart();
 
 		else:
 			pass
