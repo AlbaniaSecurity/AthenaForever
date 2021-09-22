@@ -1,0 +1,95 @@
+#!/bin/env bash
+
+# TPUT CONF :-:
+
+BLACK=$(tput setaf 0)
+RED=$(tput setaf 1)
+GREEN=$(tput setaf 2)
+YELLOW=$(tput setaf 3)
+BLUE=$(tput setaf 4)
+MAGENTA=$(tput setaf 5)
+CYAN=$(tput setaf 6)
+WHITE=$(tput setaf 7)
+BOLD=$(tput bold)
+REDBG=$(tput setab 1)
+RESET=$(tput sgr0)
+
+#######################
+
+check_install()
+{
+       if [[ `command -v curl` && `command -v lolcat` ]]; then
+              adminfinder
+       else
+              pkg install curl -y
+              pkg install python -y
+              pip install lolcat
+              adminfinder
+       fi
+}
+
+adminfinder()
+{
+       clear
+       echo -e "
+       ┌─────────────────────────────────────────────────────────────────┐
+       │ ░█████╗░███╗░░░███╗███████╗██╗███╗░░██╗██████╗░███████╗██████╗░ │
+       │ ██╔══██╗████╗░████║██╔════╝██║████╗░██║██╔══██╗██╔════╝██╔══██╗ │
+       │ ██║░░╚═╝██╔████╔██║█████╗░░██║██╔██╗██║██║░░██║█████╗░░██████╔╝ │
+       │ ██║░░██╗██║╚██╔╝██║██╔══╝░░██║██║╚████║██║░░██║██╔══╝░░██╔══██╗ │
+       │ ╚█████╔╝██║░╚═╝░██║██║░░░░░██║██║░╚███║██████╔╝███████╗██║░░██║ │
+       │ ░╚════╝░╚═╝░░░░░╚═╝╚═╝░░░░░╚═╝╚═╝░░╚══╝╚═════╝░╚══════╝╚═╝░░╚═╝ │
+       │─────────────────────────────────────────────────────────────────│
+       │                                                                 │ 
+       │                         Coded By AthenaD3V                      │
+       │                                                                 │
+       └─────────────────────────────────────────────────────────────────┘"|lolcat
+       echo
+       echo "${RED}Exemplo: ${BOLD}https://www.globo.com${RESET}"
+       echo
+       echo -ne "${WHITE}${BOLD}Digite o site >> ${RESET}"; read url
+       echo
+       echo -ne "${WHITE}${BOLD}Deseja escolher a wordlist[Y/N] ${RESET}"; read word
+       echo
+       echo "─────────────────────────────────────────────────"|lolcat
+       echo 
+       if [[ "$word" == "Y" || "$word" == "y" ]]; then
+              wordlist
+       elif [[ $word == "N" || "$word" == "n" ]]; then
+              wordpadrão
+       fi 
+}
+
+wordpadrão()
+{
+       for lista in `cat lista.txt`
+       do
+       check=$(curl -s -o /dev/null -w "%{http_code}" $url/$lista)
+       if [[ "$check" == "200" ]]; then
+              echo "${GREEN}${BOLD}[ $check ]${RESET} ${GREEN}${BOLD}$url/$lista${RESET}"
+              echo
+       else
+              echo "${RED}${BOLD}[ $check ]${RESET} ${WHITE}${BOLD}$url/$lista${RESET}"
+              echo
+       fi
+       done
+}
+
+wordlist()
+{
+
+       echo -ne "${BOLD}${REDBG}Digite o Diretório da Wordlist >>${RESET} "; read word1
+       echo
+       for lista in `cat "$word1"`
+       do
+              check=$(curl -s -o /dev/null -w "%{http_code}" $url/$lista)
+       if [[ "$check" == "200" ]]; then
+              echo "${GREEN}${BOLD}[ $check ]${RESET} ${GREEN}${BOLD}$url/$lista${RESET}"
+              echo
+       else
+              echo "${RED}${BOLD}[ $check ]${RESET} ${WHITE}${BOLD}$url/$lista${RESET}"
+              echo
+       fi
+       done
+}
+check_install
