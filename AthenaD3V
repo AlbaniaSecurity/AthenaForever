@@ -29,7 +29,7 @@ def script( program ):
 	os.system(f"bash {program}");
 
 
-def update(): 
+def update(): # Update by p0isonBr
 	print( Warning( "!" ) + "Updating, please wait...\n\033[m");
 	run(["git", "pull"]);time.sleep(1);
 
