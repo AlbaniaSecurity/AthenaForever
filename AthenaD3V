@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
-import os, sys, time
-
+import os, time
+from sys import *
 
 P = "\033[m" + "\033[1;30m"
 V = "\033[m" + "\033[1;31m"
@@ -101,8 +101,8 @@ while ( exit < 1 ):
 
 	except KeyboardInterrupt:
 		print( Warning( "!" ) + "Closing session...\033[m");
-		sys.exit()
+		exit()
 
 	except Exception as error:
 		print( Warning( "ERROR:" ) + str( error ));
-		sys.exit()
+		exit()
