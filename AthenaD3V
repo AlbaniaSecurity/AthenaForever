@@ -2,6 +2,8 @@
 
 import os, time
 from sys import *
+from subprocess import run
+
 
 P = "\033[m" + "\033[1;30m"
 V = "\033[m" + "\033[1;31m"
@@ -27,16 +29,9 @@ def script( program ):
 	os.system(f"bash {program}");
 
 
-def update():
+def update(): 
 	print( Warning( "!" ) + "Updating, please wait...\n\033[m");
-	os.system("""
-cd ..
-rm -rf AthenaForever
-git clone https://github.com/AlbaniaSecurity/AthenaForever
-cd AthenaForever
-chmod +x AthenaD3V
-./AthenaD3V
-""");time.sleep(1);
+	run(["git", "pull"]);time.sleep(1);
 
 
 def banner():
