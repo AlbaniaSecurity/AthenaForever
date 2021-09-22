@@ -1,3 +1,5 @@
+<img src=".preview.png"/>
+
 ### Instalação
 
 <pre>
