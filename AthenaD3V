@@ -23,6 +23,18 @@ def script( program ):
 	os.system(f"bash {program}");
 
 
+def update():
+	print( Warning( "!" ) + "Updating, please wait...\n\033[m");
+	os.system("""
+cd ..
+rm -rf AthenaForever
+git clone https://github.com/AlbaniaSecurity/AthenaForever
+cd AthenaForever
+chmod +x AthenaD3V
+./AthenaD3V
+""");time.sleep(1);
+
+
 def banner():
 	banner = f"""{V}
 	 ┏━┓╺┳╸╻ ╻┏━╸┏┓╻┏━┓   ╺┳┓┏━┓╻ ╻
@@ -45,9 +57,10 @@ while ( exit < 1 ):
         {A}3 {B}>> STALKING GITHUB
         {A}4 {B}>> GENERATE REVERSE SHELL
         {A}5 {B}>> DOWNLOAD YOUTUBE VIDEOS
-        {A}6 {B}>> MORE...
+	{A}6 {B}>> MORE...
 
-        {A}E {B}>> EXIT...
+	{A}U {B}>> UPDATE
+	{A}E {B}>> EXIT
 """);
 
 	try:
@@ -74,6 +87,9 @@ while ( exit < 1 ):
 
 		elif ( option == "e" or option == "exit" ):
 			exit += 1
+
+		elif ( option == "u" or option == "update" ):
+			update();
 
 		else:
 			pass
