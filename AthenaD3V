@@ -41,12 +41,11 @@ while ( exit < 1 ):
 			banner(),
 			f"""
         {A}1 {B}>> ADMIN FINDER
-        {A}2 {B}>> CONSULT DATA
-        {A}3 {B}>> ENCRYPT FILE
-        {A}4 {B}>> STALKING GITHUB
-        {A}5 {B}>> GENERATE REVERSE SHELL
-        {A}6 {B}>> DOWNLOAD YOUTUBE VIDEOS
-        {A}7 {B}>> MORE...
+        {A}2 {B}>> ENCRYPT FILE
+        {A}3 {B}>> STALKING GITHUB
+        {A}4 {B}>> GENERATE REVERSE SHELL
+        {A}5 {B}>> DOWNLOAD YOUTUBE VIDEOS
+        {A}6 {B}>> MORE...
 
         {A}E {B}>> EXIT...
 """);
@@ -59,21 +58,18 @@ while ( exit < 1 ):
 			script( ".CmFinder" );
 
 		elif ( option == "2" or option == "02" ):
-			script( ".painel.sh" );
-
-		elif ( option == "3" or option == "03" ):
 			script( ".obfuscate" );
 
-		elif ( option == "4" or option == "04" ):
+		elif ( option == "3" or option == "03" ):
 			script( ".InfoGit" );
 
-		elif ( option == "5" or option == "05" ):
+		elif ( option == "4" or option == "04" ):
 			script( ".ShellR");
 
-		elif ( option == "6" or option == "06" ):
+		elif ( option == "5" or option == "05" ):
 			script( ".YtDownload" );
 
-		elif ( option == "7" or option == "07" ):
+		elif ( option == "6" or option == "06" ):
 			script( ".ShellPlague" );
 
 		elif ( option == "e" or option == "exit" ):
