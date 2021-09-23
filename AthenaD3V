@@ -99,5 +99,5 @@ while ( exit < 1 ):
 		exit()
 
 	except Exception as error:
-		print( Warning( "ERROR:" ) + str( error ));
+		print( Warning( "ERROR" ) + str( error ));
 		exit()
