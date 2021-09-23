@@ -1,5 +1,9 @@
 #!/usr/bin/python
 
+# Crowley-Dev // GITHUB
+# TEAM: Albania-Security
+
+
 import os, time
 from sys import *
 from subprocess import run
