@@ -17,16 +17,11 @@ A = "\033[m" + "\033[1;33m"
 
 
 def Warning( warning ):
-	info = ( B ) + "\n\n[" + ( V ) + f"{warning}" + ( B ) + "] " + ( C )
-	return ( info )
+	return ( B ) + "\n\n[" + ( V ) + f"{warning}" + ( B ) + "] " + ( C )
 
 
 def clear():
 	os.system("cls" if (os.name == "nt") else "clear");
-
-
-#def restart():
-#	os.execl(executable, executable, *argv);
 
 
 def script( program ):
@@ -39,15 +34,13 @@ def update(): # Update by p0isonBr
 
 
 def banner():
-	banner = f"""{V}
+	return f"""{V}
 	 ┏━┓╺┳╸╻ ╻┏━╸┏┓╻┏━┓   ╺┳┓┏━┓╻ ╻
 	 ┣━┫ ┃ ┣━┫┣╸ ┃┗┫┣━┫    ┃┃╺━┫┃┏┛
 	 ╹ ╹ ╹ ╹ ╹┗━╸╹ ╹╹ ╹   ╺┻┛┗━┛┗┛
 
     {B}Script Coded By: {P}@AthenaD3V {B}// {P}GITHUB
 """
-
-	return ( banner );
 
 
 exit = 0
